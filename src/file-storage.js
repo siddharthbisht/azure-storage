@@ -1,11 +1,11 @@
-const { BlobServiceClient, StorageSharedKeyCredential, StorageSharedKeyCredential } = require("@azure/storage-blob");
+const { BlobServiceClient, StorageSharedKeyCredential } = require("@azure/storage-blob");
 
 function createBlobService(accountName, accessKey) {
-    const StorageSharedKeyCredential = new StorageSharedKeyCredential(accountName, accessKey);
-    const blobService = new BlobServiceClient{
+    const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accessKey);
+    const blobService = new BlobServiceClient(
         `https://${accountName}.blob.core.windows.net`,
         sharedKeyCredential
-    };
+    );
     return blobService;
 };
 
